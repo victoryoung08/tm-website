@@ -4,7 +4,7 @@ export default async function Home() {
   return (
     <main>
       <p>hello</p>
-      {/* <VideoGrid /> */}
+      <VideoGrid />
       {/* <section className="h-screen">Hello</section> */}
     </main>
   );

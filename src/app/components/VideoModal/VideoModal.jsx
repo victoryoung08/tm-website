@@ -35,7 +35,12 @@ export default function App({ video }) {
           {video.name}
         </span> */}
       </Button>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop={backdrop}>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        backdrop={backdrop}
+        fullScreen
+      >
         <ModalContent>
           {(onClose) => (
             <>

@@ -31,24 +31,16 @@ export default function App({ video }) {
           height={200}
           className="w-full object-cover object-bottom"
         />
-        {/* <span className="absolute -translate-x-[50%] -translate-y-[50%] top-1/2 left-1/2 ">
-          {video.name}
-        </span> */}
       </Button>
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         backdrop={backdrop}
-        fullScreen
       >
         <ModalContent>
           {(onClose) => (
             <>
-              <iframe
-                src={video.player_embed_url}
-                style={{ width: "auto", height: "70vh", maxWidth: "100%" }}
-                allowFullScreen
-              />
+              <iframe src={video.player_embed_url} allowFullScreen />
             </>
           )}
         </ModalContent>

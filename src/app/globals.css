@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 h1 {
-  @apply text-5xl font-black tracking-tighter;
+  @apply text-6xl font-black tracking-[-4px];
 }
 
 p {

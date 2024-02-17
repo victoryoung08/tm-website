@@ -1,11 +1,28 @@
-export default function Card({ heading, text }) {
+export default function Card({ content, position }) {
+  const cs = content;
   return (
-    <div className="flex flex-col p-8 md:flex-row">
-      <div className="w-full bg-gray h-full min-w-[12rem] min-h-[12rem]"></div>
-      <div>
-        <h3>{heading}</h3>
-        <p>{text}</p>
-      </div>
-    </div>
+    <>
+      {position === "left" ? (
+        <div>
+          <div>
+            <h2>{cs.name}</h2>
+            <p>{cs.resultsSnippet}</p>
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="placeholder" />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div>
+            <img src="https://via.placeholder.com/300" alt="placeholder" />
+          </div>
+          <div>
+            <h2>{cs.name}</h2>
+            <p>{cs.resultsSnippet}</p>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

@@ -24,7 +24,10 @@ export default async function Home() {
         <div className="w-full h-48 max-w-[80%] bg-white rounded-xl"></div>
       </section>
       {/* LOGO GRID */}
+      {/* mission statement */}
+      {/* feature row */}
       {/* <VideoGrid /> */}
+      {/* case study */}
       <section>
         {caseStudies.map((cs, index) =>
           index % 2 === 0 ? (

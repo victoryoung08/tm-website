@@ -14,71 +14,93 @@ const client = contentful.createClient({
 });
 
 export const getCaseStudies = async () => {
-  const res = await fetch(
-    `${base_url}/spaces/${space}/environments/${environment}/entries?access_token=${accessToken}`,
-    {
-      method: "GET",
-      cache: "no-store",
-    }
-  );
+  try {
+    const res = await fetch(
+      `${base_url}/spaces/${space}/environments/${environment}/entries?access_token=${accessToken}`,
+      {
+        method: "GET",
+        cache: "no-store",
+      }
+    );
 
-  const data = await res.json();
-  return data;
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const getCaseStudiesContent = async () => {
-  const res = await fetch(
-    `${base_url}/spaces/${space}/environments/${environment}/entries?access_token=${accessToken}&content_type=${caseStudiesContentTypeId}`,
-    {
-      method: "GET",
-      cache: "no-store",
-    }
-  );
+  try {
+    const res = await fetch(
+      `${base_url}/spaces/${space}/environments/${environment}/entries?access_token=${accessToken}&content_type=${caseStudiesContentTypeId}`,
+      {
+        method: "GET",
+        cache: "no-store",
+      }
+    );
 
-  const data = await res.json();
-  const items = data.items;
-  const caseStudyFields = items.map((item) => item.fields);
-  return caseStudyFields;
+    const data = await res.json();
+    const items = data.items;
+    const caseStudyFields = items.map((item) => item.fields);
+    return caseStudyFields;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const getFields = async () => {
-  const { items } = await getCaseStudies();
-  const caseStudies = items.filter(
-    (item) => item.sys.space.sys.id === "98888r78yd9b"
-  );
-  const fields = caseStudies.map((cs) => cs.fields);
-  return fields;
+  try {
+    const { items } = await getCaseStudies();
+    const caseStudies = items.filter(
+      (item) => item.sys.space.sys.id === "98888r78yd9b"
+    );
+    const fields = caseStudies.map((cs) => cs.fields);
+    return fields;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const getLogos = async () => {
-  const fields = await getFields();
-  const logos = fields.filter((field) => field.title === "logos");
-  return logos;
+  try {
+    const fields = await getFields();
+    const logos = fields.filter((field) => field.title === "logos");
+    return logos;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-export const getVideoFields = async () => {};
-
 export const getCaseStudy = async (id) => {
-  const res = await fetch(
-    `${base_url}/spaces/${space}/environments/${environment}/entries/${id}`,
-    {
-      method: "GET",
-    }
-  );
-  const data = await res.json();
-  return data;
+  try {
+    const res = await fetch(
+      `${base_url}/spaces/${space}/environments/${environment}/entries/${id}`,
+      {
+        method: "GET",
+      }
+    );
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const getAssetDetails = async (assetId) => {
-  const res = await fetch(
-    `${base_url}/spaces/${space}/environments/${environment}/assets/${assetId}?access_token=${accessToken}`,
-    {
-      method: "GET",
-    }
-  );
-  const data = await res.json();
-  const assetURL = data.fields.file.url;
-  return `https:${assetURL}`;
+  try {
+    const res = await fetch(
+      `${base_url}/spaces/${space}/environments/${environment}/assets/${assetId}?access_token=${accessToken}`,
+      {
+        method: "GET",
+      }
+    );
+    const data = await res.json();
+    const assetURL = data.fields.file.url;
+    return `https:${assetURL}`;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const getCaseStudyPageData = async (query, value) => {
